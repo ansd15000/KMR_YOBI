@@ -22,7 +22,8 @@ Backend 구조 : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)
 # 레시피 테이블
 베이스 이미지: python 3.8.9  
 Backend 구조 : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)  
-주 서비스 : 이미지 분석 후 인식된 재료들로 추천 알고리즘 진행.  가장 유사도가 높은 음식 이름들로 DynamoDB에서 다시 검색하여 클라이언트로 전달  
+주 서비스 : 이미지 분석 후 인식된 재료들로 추천 알고리즘 진행.  
+가장 유사도가 높은 음식 이름들로 DynamoDB에서 다시 검색하여 클라이언트로 전달  
 포트번호 5001
 
 ---
