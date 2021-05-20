@@ -38,6 +38,7 @@ COPY predictor.py /root/server/
 COPY serve.py     /root/server/
 COPY wsgi.py      /root/server/
 COPY container_recipe.py /root/server/models/
+COPY container_ingredient.py /root/server/models/
 
 # ============ for nginx ============
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
