@@ -8,6 +8,7 @@ api = Api(app)         # Flask 객체에 Api 객체 등록
 
 # ========= 레시피 컨테이너 ==================================
 from models import container_recipe as recipe
+from models import container_ingredient as ingre # 이럴거면 레시피 테이블도 병합할껄 그랬나
 
 # 추천 레시피 반환
 # 인자값에 유저아이디가 있다면 인식된 재료들 그대로 사용자 재료 테이블에 추가하기
@@ -22,9 +23,7 @@ class Recipe(Resource):
         # 띄어쓰기 기준 문자열 반환된 주재료 데이터
         grocery_list = a['grocery_list'].split(' ') # 인식된 전체 재료
         main_list    = a['main_list'].split(' ')    # 유저가 선택한 주 재료
-        if '달걀' in main_list : main_list.append('계란') # 모델이 달걀만 인식하는 문제로 같은재료인 계란도 검색할수 있도록 수동으로 값 추가
-        if '달걀' in grocery_list : grocery_list.append('계란')
-        elif '계란' in grocery_list : grocery_list.append('달걀')
+        if '달걀' in grocery_list : grocery_list.append('계란') # 달걀이랑 계란은 같은 음식인데 모델 결과값은 하나라서.
 
         print('==== grocery_list ====')
         print(grocery_list) # 전체 재료
@@ -38,7 +37,11 @@ class Recipe(Resource):
 
         # 성한이 코드, 메인재료 2개이하를 권장한대. 요청은 최대 1.3초 미만
         # recipes = recipe2.getRecipe(main_list, grocery_list)
-
+        
+        if a['user_id'] : # 만약 유저 아이디가 있다면 유저 재료테이블에 데이터 추가
+            print('인식된 재료 갱신!')
+            ingre.update_userIngredient(a['user_id'], grocery_list, None)
+            
         #  전달해줄 값 [ {} {} ]
         result['recipe_list'] = recipes
         print(f'메인코드 처리시간: {timeit.default_timer() - codestart : 0.3f} 초')
