@@ -12,23 +12,23 @@
 
 ---
 # 재료 테이블
-베이스 이미지: python 3.8.9  
-Backend 구조 : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)  
-주 서비스 : 재료의 유통기한 정보를 조회, 저장, 수정, 삭제.  
+BaseImage: python 3.8.9  
+Back-end : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)  
+Service : 재료의 유통기한 정보를 조회, 저장, 수정, 삭제.  
 사용자가 보유한 재료의 유통기한과 신선도 정보를 저장, 조회, 수정, 삭제  
-포트번호 5000
+PORT : 5000
 
 ---
 # 레시피 테이블
-베이스 이미지: python 3.8.9  
-Backend 구조 : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)  
-주 서비스 : 이미지 분석 후 인식된 재료들로 추천 알고리즘 진행.  
+BaseImage: python 3.8.9  
+Back-end : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)  
+Service : 이미지 분석 후 인식된 재료들로 추천 알고리즘 진행.  
 가장 유사도가 높은 음식 이름들로 DynamoDB에서 다시 검색하여 클라이언트로 전달  
-포트번호 5001
+PORT : 5001
 
 ---
 # 사용자 테이블
-베이스 이미지: python 3.8.9  
-Backend 구조 : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)  
-주 서비스 : 사용자 정보를 조회, 저장, 수정, 삭제, 회원가입, 아이디 중복확인  
-포트번호 5002
+BaseImage: python 3.8.9  
+Back-end : Docker, Gunicorn을 활용한 WSGI 서버 (Flask + Nginx)  
+Service : 사용자 정보를 조회, 저장, 수정, 삭제, 회원가입, 아이디 중복확인  
+PORT : 5002
