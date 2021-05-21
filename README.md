@@ -18,7 +18,8 @@ Dockerfile 빌드시 서비스하려는 aws의 계정정보를 활용하기위�
 docker build -t user:latest --build-arg AWS_DEFAULT_REGION=ap-northeast-2 --build-arg AWS_ACCESS_KEY_ID=^ㅍ^ --build-arg AWS_SECRET_ACCESS_KEY=^ㅠ^ .  
 ```
 
-컨테이너 실행시 아래와 같은 형태로 볼륨 마운드를 진행하여 코드 수정사항을 수시로 적용할 수 있도록 한다. 포트는 Dockerfile에 명시하였기에 -P 옵션으로 랜덤으로 주어도 좋다.  
+컨테이너 실행시 아래와 같은 형태로 볼륨 마운트를 진행하여 코드 수정사항을 수시로 적용할 수 있도록 한다.  
+포트는 Dockerfile에 명시하였기에 -P 옵션으로 랜덤으로 주어도 좋다.  
 ```
 docker run --name user -p 5002:5002 -v $(pwd)/work:/root/server/work user:latest
 ```
