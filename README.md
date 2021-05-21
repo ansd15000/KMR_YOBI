@@ -8,7 +8,22 @@
 크롤링하여 json 파일로 저장된 요리 레시피 디렉토리의 데이터를 DynamoDB에 추가하는 로직
 
 ### restful_API 요청정보 정리 최종.xlsx
-프론트에서 백엔드로 요청할 주소 정보와 반환 데이터 정보 정리
+프론트에서 백엔드로 요청할 주소 정보와 반환 데이터 정보 정리  
+
+---
+### 도커파일 빌드 및 이미지 실행 예시
+
+Dockerfile 빌드시 서비스하려는 aws의 계정정보를 활용하기위한 세가지의 인자값을 추가로 선언해주어야 한다. 
+docker build -t user:latest --build-arg AWS_DEFAULT_REGION=ap-northeast-2 --build-arg AWS_ACCESS_KEY_ID=^ㅍ^ --build-arg AWS_SECRET_ACCESS_KEY=^ㅠ^ .  
+
+
+컨테이너 실행시 아래와 같은 형태로 볼륨 마운드를 진행하여 코드 수정사항을 수시로 적용할 수 있도록 한다. 포트는 Dockerfile에 명시하였기에 -P 옵션으로 랜덤으로 주어도 좋다.  
+docker run --name user -p 5002:5002 -v $(pwd)/work:/root/server/work user:latest
+
+---
+## 선택사항
+각 컨테이너마다 빌드하는것이 번거롭고 귀찮다면 docker-compose.yml 을 활용하여도 괜찮다.  
+만약 docker-compose 로 빌드시 aws 계정정보는 꼭 편집해서 추가 해주어야 한다!  
 
 ---
 # 재료 테이블
