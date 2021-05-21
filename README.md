@@ -13,7 +13,7 @@
 ---
 ### 도커파일 빌드 및 이미지 실행 예시
 
-Dockerfile 빌드시 서비스하려는 aws의 계정정보를 활용하기위한 세가지의 인자값을 추가로 선언해주어야 한다. 
+Dockerfile 빌드시 서비스하려는 aws의 계정정보를 활용하기위한 세가지의 인자값을 추가로 선언해주어야 한다.  
 docker build -t user:latest --build-arg AWS_DEFAULT_REGION=ap-northeast-2 --build-arg AWS_ACCESS_KEY_ID=^ㅍ^ --build-arg AWS_SECRET_ACCESS_KEY=^ㅠ^ .  
 
 
